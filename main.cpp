@@ -23,8 +23,13 @@ int main() {
 	sm.show();
 	cout << ' ';
 	df.show();
-	cout << ' ';
+	cout << endl;
+	second.show();
 	second++;
+	cout << ' ';
+	second.show();
+	second++;
+	cout << ' ';
 	second.show();
 	cout << ' ' << (first == second) << ' ' << (first > second) << ' ';
 	second = first;
@@ -34,5 +39,9 @@ int main() {
 	first.show();
 	cout << ' ';
 	cout << (first == second);
+	cout << endl;
+	second++;
+	first = second;
+	first.show();
 	delete[] nums;
 }
