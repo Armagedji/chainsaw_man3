@@ -10,7 +10,8 @@ int main() {
 	rational* nums = new rational[n];
 	for (int i = 0; i < n; i++) {
 		cin >> a >> b;
-		nums[i] = rational(a, b);
+		rational nw = rational(a, b);
+		nums[i] = nw;
 	}
 	for (int i = 0; i < n; i++) {
 		nums[i].show();
