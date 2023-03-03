@@ -10,8 +10,9 @@ int rational::nod(int a1, int b1) {
 }
 
 rational::rational(int a1, int b1) {
+	setlocale(LC_ALL, "russian");
 	if (b1 == 0) {
-		cout << "Çíàìåíàòåëü ðàâåí íóëþ!" << endl;
+		cout << "Ð—Ð½Ð°Ð¼ÐµÐ½Ð°Ñ‚ÐµÐ»ÑŒ Ñ€Ð°Ð²ÐµÐ½ Ð½ÑƒÐ»ÑŽ!" << endl;
 		a = 0; b = 0; sh = false;
 	}
 	else {
@@ -19,7 +20,7 @@ rational::rational(int a1, int b1) {
 		a = a1 / nod(a1, b1);
 		b = b1 / nod(a1, b1);
 		if (a == b) {
-			cout << "Äðîáü ÿâëÿåòñÿ öåëîé!" << endl;
+			cout << "Ð”Ñ€Ð¾Ð±ÑŒ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ñ†ÐµÐ»Ð¾Ð¹!" << endl;
 			sh = false;
 		}
 		if (a > b) a %= b;
@@ -32,7 +33,7 @@ rational::rational() {
 
 void rational::set(int a1, int b1) {
 	if (b1 == 0) {
-		cout << "Çíàìåíàòåëü ðàâåí íóëþ!" << endl;
+		cout << "Ð—Ð½Ð°Ð¼ÐµÐ½Ð°Ñ‚ÐµÐ»ÑŒ Ñ€Ð°Ð²ÐµÐ½ Ð½ÑƒÐ»ÑŽ!" << endl;
 		sh = false;
 	}
 	else {
@@ -40,7 +41,7 @@ void rational::set(int a1, int b1) {
 		a = a1 / nod(a1, b1);
 		b = b1 / nod(a1, b1);
 		if (a == b) {
-			cout << "Äðîáü ÿâëÿåòñÿ öåëîé!" << endl;
+			cout << "Ð”Ñ€Ð¾Ð±ÑŒ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ñ†ÐµÐ»Ð¾Ð¹!" << endl;
 			sh = false;
 		}
 		if (a > b) a %= b;
@@ -59,14 +60,12 @@ rational operator - (rational& x, rational& y) {
 	return rational(x.a * y.b - y.a * x.b, x.b * y.b);
 }
 
-rational rational::operator++() {
-	a++;
-	return *this;
+void rational::operator++() {
+	this->set(this->a + 1, this->b);
 }
 
-rational rational::operator++(int d) {
-	a++;
-	return *this;
+void rational::operator++(int d) {
+	this->set(this->a + 1, this->b);
 }
 
 bool rational::operator==(rational& x) {
@@ -79,6 +78,6 @@ bool rational::operator>(rational& x) {
 	return false;
 }
 
-rational rational::operator=(rational x) {
-	return x;
+rational rational::operator=(rational& x) {
+	this->set(x.a, x.b);
 }
